@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Crear Notebook</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear Notebook
+{% endblock h1_header %}
+
+{% block main %}
+
+{% comment %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>
+            Marca:
+            <input type="text" name="marca">
+        </p>
+        <p>
+            Descripción:
+            <input type="text" name="descripción">
+        </p>
+        <p>
+            Año:
+            <input type="number" name="año">
+        </p>
+
+        <input type="submit" value="Crear">
+        {% comment %} <button>Crear</button> 
+
+    </form>
+{% endcomment %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{formulario}}
+    <input type="submit" value="Crear">
+</form>
+
+{% endblock main %}
