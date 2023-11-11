@@ -43,9 +43,9 @@ def crear_notebook(request):
 def crear_celular(request):
     
     if request.method == 'POST':
-        formulario = CrearCelularFormulario(request.POST)
-        if formulario.is_valid():
-            info_limpia = formulario.cleaned_data
+        formulario_de_celulares = CrearCelularFormulario(request.POST)
+        if formulario_de_celulares.is_valid():
+            info_limpia = formulario_de_celulares.cleaned_data
             
             marca = info_limpia.get('marca')
             descripcion = info_limpia.get('descripcion')
@@ -55,21 +55,21 @@ def crear_celular(request):
             celular = Celular(marca=marca.lower(), descripcion=descripcion, año=año, modelo=modelo)
             celular.save()
         
-            return redirect('celulares')
+            return redirect('crear_celular')
         else:
-            formulario = CrearCelularFormulario()
-            return render(request, 'inicio/crear_notebook.html', {'formulario': formulario})
+            formulario_de_celulares = CrearCelularFormulario()
+            return render(request, 'inicio/crear_celular.html', {'formulario_de_celulares': formulario_de_celulares})
         
-    formulario = CrearCelularFormulario()
-    return render(request, 'inicio/crear_notebook.html', {'formulario': formulario})
+    formulario_de_celulares = CrearCelularFormulario()
+    return render(request, 'inicio/crear_celular.html', {'formulario_de_celulares': formulario_de_celulares})
 
 #formulario crear_tablet  
 def crear_tablet(request):
     
     if request.method == 'POST':
-        formulario = CrearTabletFormulario(request.POST)
-        if formulario.is_valid():
-            info_limpia = formulario.cleaned_data
+        formulario_de_tablets = CrearTabletFormulario(request.POST)
+        if formulario_de_tablets.is_valid():
+            info_limpia = formulario_de_tablets.cleaned_data
             
             marca = info_limpia.get('marca')
             descripcion = info_limpia.get('descripcion')
@@ -79,13 +79,13 @@ def crear_tablet(request):
             tablet = Tablet(marca=marca.lower(), descripcion=descripcion, año=año, modelo=modelo)
             tablet.save()
         
-            return redirect('tablets')
+            return redirect('crear_tablet')
         else:
-            formulario = CrearTabletFormulario()
-            return render(request, 'inicio/crear_notebook.html', {'formulario': formulario})
+            formulario_de_tablets = CrearTabletFormulario()
+            return render(request, 'inicio/crear_tablet.html', {'formulario_de_tablets': formulario_de_tablets})
         
-    formulario = CrearTabletFormulario()
-    return render(request, 'inicio/crear_notebook.html', {'formulario': formulario})
+    formulario_de_tablets = CrearTabletFormulario()
+    return render(request, 'inicio/crear_tablet.html', {'formulario_de_tablets': formulario_de_tablets})
     
     
     

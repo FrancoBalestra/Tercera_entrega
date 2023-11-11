@@ -1,5 +1,5 @@
 from django.urls import path
-from inicio.views import inicio, notebooks, crear_notebook, crear_celular, crear_tablet
+from inicio.views import inicio, notebooks, crear_notebook, crear_celular, crear_tablet 
 
 urlpatterns = [
     path('', inicio, name='inicio'),
