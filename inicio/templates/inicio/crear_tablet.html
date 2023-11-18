@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Crear Tablet</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear Tablet
+{% endblock h1_header %}
+
+{% block main %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{formulario_de_tablets}}
+    <input type="submit" value="Crear">
+</form>
+
+{% endblock main %}

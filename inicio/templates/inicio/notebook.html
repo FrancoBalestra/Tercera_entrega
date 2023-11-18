@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Buscar</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Buscar
+{% endblock h1_header %}
+
+{% block main %}
+
+<form action="">
+    {% comment %} <input type="text" name="marca" placeholder="mac book, apple, ..."> {% endcomment %}
+    {{formulario}}
+    <input type="submit" value="Buscar">
+
+{% if listado_de_notebooks %}
+<ul>
+    {% for notebook in listado_de_notebooks %}
+    <li>{{notebook}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron resultados.</p>
+{% endif %}
+
+{% endblock main %}
