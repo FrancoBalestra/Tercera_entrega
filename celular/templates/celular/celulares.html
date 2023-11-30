@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Celulares</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Celulares
+{% endblock h1_header %}
+
+{% block main %}
+<p>
+    <a href={% url "crear_celular" %}>Crear Celular</a>
+</p>
+{% if listado_de_celulares %}
+<ul>
+    {% for celular in listado_de_celulares %}
+    <li>{{celular}} <a href={% url "actualizar_celular" celular.id %}>Actualizar</a> | <a href={% url "eliminar_celular" celular.id %}>Eliminar</a> | <a href={% url "detalle_celular" celular.id %}>Ver mas...</a> 
+    </li>
+        {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron celulares.</p>
+{% endif %}
+
+{% endblock main %}

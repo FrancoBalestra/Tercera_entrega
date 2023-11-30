@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
-    {% load static %}
     <head>
+        {% load static %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         {% block title_head %}
-        <title>Base</title>
+        <title>Digital Delights</title>
         {% endblock title_head %}
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -22,12 +23,23 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href={% url "inicio" %}>Digital Delights</a>
-                <a class="navbar-brand" href={% url "notebooks" %}>Buscar</a>
-                <a class="navbar-brand" href={% url "crear_celular" %}>Celulares</a>
-                <a class="navbar-brand" href={% url "crear_tablet" %}>Tablets</a>
-                <a class="navbar-brand" href={% url "crear_notebook" %}>Notebooks</a>                
-             {% comment %}   <a class="btn btn-primary" href="#signup">Sign Up</a> {% endcomment %}
+                <a class="navbar-brand" href={% url "index" %}>Digital Delights</a>
+                <a class="navbar-brand" href={% url "notebooks" %}>Notebooks</a>
+                <a class="navbar-brand" href={% url "monitores" %}>Monitores</a>
+                <a class="navbar-brand" href={% url "celulares" %}>Celulares</a>
+                {% if request.user.is_authenticated %}               
+                    <li class="nav-item"><a class="nav-link" href={% url 'perfil' %}>{{request.user.username.capitalize}}</a></li> <!--Agregar al "Href" dirrecion al perfil del usuario-->
+                    <li class="nav-item"><a class="nav-link" href={% url 'logout' %}>Cerrar Sesion</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href={% url 'login' %}>Iniciar Sesion</a></li>
+                    <li class="nav-item"><a class="nav-link" href={% url 'registrarse' %}>Register</a></li>
+                {% endif %}
+                <li class="nav-item"><a class="nav-link" href={% url 'about' %}>About</a></li>
+                    {% if request.user.datosextra.avatar %}
+                    <img src={{request.user.datosextra.avatar.url}} alt="avatar" height='50px'>
+                {% endif %}
+            </div>
+        </nav>
             </div>
         </nav>
         <!-- Masthead-->
@@ -40,7 +52,7 @@
                             <!-- Page heading-->
                             <h1 class="mb-5">
                                 {% block h1_header %} 
-                                Base
+                                Inicio!
                                 {% endblock h1_header %}
                             </h1>
                             <!-- Signup form-->
@@ -106,38 +118,6 @@
         <main>
             {% block main %} {% endblock main %}
         </main>     
-
-        <!-- Footer-->
-        <footer class="footer bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">About</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contact</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                        </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

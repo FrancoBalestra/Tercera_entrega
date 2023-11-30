@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 
 {% block title_head %}
-<title>Buscar</title>
+<title>Notebooks</title>
 {% endblock title_head %}
 
 {% block h1_header %}
-Buscar
+Notebooks
 {% endblock h1_header %}
 
 {% block main %}
+
+<p>
+    <a href={% url "crear_notebook" %}>Crear Notebook</a>
+</p>
 
 <form action="">
     {% comment %} <input type="text" name="marca" placeholder="mac book, apple, ..."> {% endcomment %}
@@ -18,7 +22,7 @@ Buscar
 {% if listado_de_notebooks %}
 <ul>
     {% for notebook in listado_de_notebooks %}
-    <li>{{notebook}}</li>
+    <li>{{notebook}} | <a href={% url "actualizar_notebook" notebook.id %}>Actualizar</a> | <a href={% url "eliminar_notebook" notebook.id %}>Eliminar</a> | <a href={% url "detalle_notebook" notebook.id %}>Ver mas...</a> </li>
     {% endfor %}
 </ul>
 {% else %}

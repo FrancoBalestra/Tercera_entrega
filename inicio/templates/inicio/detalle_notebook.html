@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Notebook {{notebook.id}}</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Notebook {{notebook.id}}
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>Marca: {{notebook.marca}}</li>
+    <li>Descripcion: {{notebook.descripcion}}</li>
+    <li>Año: {{notebook.año}}</li>
+</ul>
+
+{% endblock main %}

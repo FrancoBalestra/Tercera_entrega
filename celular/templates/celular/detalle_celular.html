@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Celular{{monitor.id}}</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Celular{{monitor.id}}
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>Marca: {{celular.marca}}</li>
+    <li>Modelo: {{celular.modelo}}</li>
+    <li>Descripcion: {{celular.descripcion}}</li>
+    <li>Año: {{celular.fecha_de_creacion}}</li>
+</ul>
+
+{% endblock main %}

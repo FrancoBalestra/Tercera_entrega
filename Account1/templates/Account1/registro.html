@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Registro</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Registrarse
+{% endblock h1_header %}
+
+{% block main %}
+
+<form action={% url "registrarse" %} method="POST">
+    {% csrf_token %}
+    <table>
+        {{formulario}}
+    </table>
+    <button>Registrarse</button>
+</form> 
+{% endblock main %}
